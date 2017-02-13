@@ -103,7 +103,7 @@
     port: "<%= @riemann_port %>",
     transport: "<%= @riemann_transport %>",
     tags: [<%= @riemann_tags.join(', ') %>],
-    parseNamespace: <%= @riemann_parseNamespace %>",
+    parseNamespace: <%= @riemann_parseNamespace %>,
     tagWithEventParts: <%= @riemann_tagWithEventParts %>
   }
 <% end -%>
