@@ -112,6 +112,13 @@ class statsd::params {
       $init_provider  = 'upstart'
       $init_script    = 'puppet:///modules/statsd/statsd-upstart'
     }
+    'Ubuntu': {
+      $init_location  = '/lib/systemd/system/statsd.service'
+      $init_sysconfig = '/etc/default/statsd'
+      $init_mode      = '0644'
+      $init_provider  = 'systemd'
+      $init_script    = 'puppet:///modules/statsd/statsd-systemd'
+    }
     default: {
       fail('Unsupported OS Family')
     }
