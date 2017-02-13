@@ -97,6 +97,17 @@
   }
 <% end -%>
 
+<% if @backends.grep(/riemann/).any? -%>
+, riemann: {
+    host: "<%= @riemann_host %>",
+    port: "<%= @riemann_port %>",
+    transport: "<%= @riemann_transport %>",
+    tags: [<%= @riemann_tags.join(', ') %>],
+    parseNamespace: <%= @riemann_parseNamespace %>",
+    tagWithEventParts: <%= @riemann_tagWithEventParts %>
+  }
+<% end -%>
+
 <% if @backends.grep(/repeater/).any? -%>
 , repeater: [<%= @repeater.map { |r| r.to_json }.join(", ") %>]
   <% if defined? @repeaterProtocol -%>

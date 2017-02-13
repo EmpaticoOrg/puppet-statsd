@@ -79,6 +79,13 @@ class statsd::params {
   $stackdriver_sendTimerPercentiles  = false
   $stackdriver_debug                 = false
 
+  $riemann_host                      = 'localhost'
+  $riemann_port                      = '5555'
+  $riemann_transport                 = 'tcp'
+  $riemann_tags                      = []
+  $riemann_parseNamespace            = false
+  $riemann_tagWithEventParts         = false
+
   $repeater                          = undef
   $repeaterProtocol                  = undef
 

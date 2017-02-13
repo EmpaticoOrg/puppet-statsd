@@ -32,4 +32,14 @@ class statsd::backends {
       require => Package['statsd'],
     }
   }
+
+  # Make sure $statsd::riemann_host is set
+  if $backends =~ /riemann/ {
+    exec { 'install-statsd-riemann-backend':
+      command => "${statsd::npm_bin} install --save statsd-riemann-backend",
+      cwd     => "${statsd::node_module_dir}/statsd",
+      unless  => "/usr/bin/test -d ${node_base}/statsd-riemann-backend",
+      require => Package['statsd'],
+    }
+  }
 }

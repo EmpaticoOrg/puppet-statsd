@@ -79,6 +79,13 @@ class statsd (
   $stackdriver_sendTimerPercentiles  = $statsd::params::stackdriver_sendTimerPercentiles,
   $stackdriver_debug                 = $statsd::params::stackdriver_debug,
 
+  $riemann_host                      = $statsd::params::riemann_host,
+  $riemann_port                      = $statsd::params::riemann_port,
+  $riemann_transport                 = $statsd::params::riemann_transport,
+  $riemann_tags                      = $statsd::params::riemann_tags,
+  $riemann_parseNamespace            = $statsd::params::riemann_parseNamespace,
+  $riemann_tagWithEventParts         = $statsd::params::riemann_tagWithEventParts,
+
   $repeater                          = $statsd::params::repeater,
   $repeaterProtocol                  = $statsd::params::repeaterProtocol,
 
