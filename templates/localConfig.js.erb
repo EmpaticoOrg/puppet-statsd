@@ -102,7 +102,7 @@
     host: "<%= @riemann_host %>",
     port: "<%= @riemann_port %>",
     transport: "<%= @riemann_transport %>",
-    tags: [<%= @riemann_tags.join(', ') %>],
+    tags: [<%= @riemann_tags.map {|b| b.to_json }.join(',') %>],
     parseNamespace: <%= @riemann_parseNamespace %>,
     tagWithEventParts: <%= @riemann_tagWithEventParts %>
   }
