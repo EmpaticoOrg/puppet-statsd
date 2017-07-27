@@ -31,6 +31,7 @@ You can install multiple backends. Supported backends include:
 * influxdb  
 * librato  
 * stackdriver  
+* riemann  
 * repeater
 
 More information about the installation of each backend available in [manifests/backends.pp](https://github.com/justindowning/puppet-statsd/blob/master/manifests/backends.pp).
@@ -69,6 +70,15 @@ class { 'statsd':
 class { 'statsd':
   backends           => ['stackdriver-statsd-backend'],
   stackdriver_apiKey => 'apiKey'
+}
+```
+
+### Riemann
+
+```
+class { 'statsd':
+  backends     => ['statsd-riemann-backend'],
+  riemann_host => 'riemann.example.com'
 }
 ```
 

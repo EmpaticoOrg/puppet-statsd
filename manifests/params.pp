@@ -79,6 +79,13 @@ class statsd::params {
   $stackdriver_sendTimerPercentiles  = false
   $stackdriver_debug                 = false
 
+  $riemann_host                      = 'localhost'
+  $riemann_port                      = '5555'
+  $riemann_transport                 = 'tcp'
+  $riemann_tags                      = []
+  $riemann_parseNamespace            = false
+  $riemann_tagWithEventParts         = false
+
   $repeater                          = undef
   $repeaterProtocol                  = undef
 
@@ -99,11 +106,18 @@ class statsd::params {
       $init_script    = 'puppet:///modules/statsd/statsd-init-rhel'
     }
     'Debian': {
-      $init_location  = '/etc/init/statsd.conf'
+      $init_location  = '/lib/systemd/system/statsd.service'
       $init_sysconfig = '/etc/default/statsd'
       $init_mode      = '0644'
-      $init_provider  = 'upstart'
-      $init_script    = 'puppet:///modules/statsd/statsd-upstart'
+      $init_provider  = 'systemd'
+      $init_script    = 'puppet:///modules/statsd/statsd-systemd'
+    }
+    'Ubuntu': {
+      $init_location  = '/lib/systemd/system/statsd.service'
+      $init_sysconfig = '/etc/default/statsd'
+      $init_mode      = '0644'
+      $init_provider  = 'systemd'
+      $init_script    = 'puppet:///modules/statsd/statsd-systemd'
     }
     default: {
       fail('Unsupported OS Family')

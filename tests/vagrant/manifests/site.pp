@@ -10,6 +10,7 @@ class { 'statsd':
     'statsd-influxdb-backend',
     'statsd-librato-backend',
     'stackdriver-statsd-backend',
+    'statsd-riemann-backend',
     './backends/repeater'
   ],
   graphite_globalSuffix => 'foobar',
@@ -17,6 +18,7 @@ class { 'statsd':
   librato_email         => 'foo@bar.com',
   librato_token         => 'secret_token',
   stackdriver_apiKey    => 'foobar',
+  riemann_host          => 'localhost',
   repeater              => [
     {
       'host' => '1.1.1.1',
